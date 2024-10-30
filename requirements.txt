@@ -6,3 +6,4 @@ matplotlib==3.7.1
 spacy==3.7.5
 ipykernel==6.25.2 #If being run on vscode
 bertopic==0.16.4
+neo4j==5.25.0
