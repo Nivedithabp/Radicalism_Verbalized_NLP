@@ -52,6 +52,23 @@ pip install -r requirements.txt
 
 ---
 
+#### *Note*: Keeping up-to-date with Repo
+
+- Use git pull to pull the updates and merge them into your local code.
+
+```
+git pull origin main
+```
+
+---
+
+#### *Note*: Utilizing Docling through Spacy for file conversion:
+
+- We've set up the repo to read text in through pdfs, word documents, html, etc. The conversion is being done with Spacy's integration with Docling. The name of this integration is spaCyLayout, or layout as the function is called.
+- Currently, this is reading in documents in the `sample_data` folder. For easy testing of your own documents, feel free to add your file into that folder/directory and reference the path in the code.
+
+---
+
 #### 4. Running Task 1: *Keyword/Key Phrase Extraction*
 
 - The first thing you'll want to ensure is that you have made the text you want processed accesibile by the keyword extraction. There are two ways to do this:
