@@ -35,13 +35,13 @@ conda create --name your_env_name python=3.10
 conda activate your_env_name
 ```
 
-#### 2. Clone the Repository
+### 2. Clone the Repository
 
 ```
 git clone https://github.com/Nivedithabp/Radicalism_Verbalized_NLP.git
 ```
 
-#### 3. Install Dependencies
+### 3. Install Dependencies
 
 - *NOTE*: python version **3.10** or greater is required.
 
@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 ---
 
-#### *Note*: Keeping up-to-date with Repo
+### *Note*: Keeping up-to-date with Repo
 
 - Use git pull to pull the updates and merge them into your local code.
 
@@ -62,14 +62,14 @@ git pull origin main
 
 ---
 
-#### *Note*: Utilizing Docling through Spacy for file conversion:
+### *Note*: Utilizing Docling through Spacy for file conversion:
 
 - We've set up the repo to read text in through pdfs, word documents, html, etc. The conversion is being done with Spacy's integration with Docling. The name of this integration is spaCyLayout, or layout as the function is called.
 - Currently, this is reading in documents in the `sample_data` folder. For easy testing of your own documents, feel free to add your file into that folder/directory and reference the path in the code.
 
 ---
 
-#### 4. Running Task 1: *Keyword/Key Phrase Extraction*
+## 4. Running Task 1: *Keyword/Key Phrase Extraction*
 
 - The first thing you'll want to ensure is that you have made the text you want processed accesibile by the keyword extraction. There are two ways to do this:
   - 1. When prompted by the notebook, if you want manually enter your text, you can type ``text`` in the prompt window. You will then be prompted a second time to enter you text manually.
@@ -81,7 +81,7 @@ git pull origin main
 
 ---
 
-#### 5. Running Task 2: *Topic Modeling*
+## 5. Running Task 2: *Topic Modeling*
 
 - Firstly, before running the notebook to extract Topics from the text, sign up for Neo4j.
   - Only required if using a Neo4j Knowledge Graph is desired.
@@ -99,6 +99,6 @@ git pull origin main
 
 ---
 
-#### 6. Task 3: *Cognitive Bias Classification*
+## 6. Task 3: *Cognitive Bias Classification*
 
 ---
