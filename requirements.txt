@@ -12,3 +12,5 @@ pytextrank==3.3.0
 gradio==5.6.0
 ollama
 langdetect
+docling==2.8.0
+spacy-layout # for using docling in a spacy pipeline
