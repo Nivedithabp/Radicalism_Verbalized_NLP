@@ -27,7 +27,7 @@ def load_text(file_path):
         return file.read()
 
 def extract_keywords(text, num_keywords=50):
-    # Load French language model
+    # Load French model
     nlp = spacy.load("fr_core_news_sm")
     doc = nlp(text)
     
@@ -46,25 +46,17 @@ def extract_keywords(text, num_keywords=50):
     return keywords, lemmatized_words
 
 def extract_key_phrases(lemmatized_words, num_phrases=30):
-    # Join tokens back into a single string for phrase extraction
     text = " ".join(lemmatized_words)
     
-    # Use CountVectorizer to extract bigrams/trigrams
     vectorizer = CountVectorizer(ngram_range=(2, 3)) 
     X = vectorizer.fit_transform([text])
     
-    # Extract feature names (phrases) and their frequencies
     freqs = X.toarray().flatten()
     features = vectorizer.get_feature_names_out()
-    
-    # Create a dictionary of phrase: frequency
     phrase_freq = dict(zip(features, freqs))
-    
-    # Sort by frequency
     sorted_phrases = sorted(phrase_freq.items(), key=lambda x: x[1], reverse=True)
-    
-    # Return top N phrases
-    top_phrases = dict(sorted_phrases[:num_phrases])
+   
+    top_phrases = dict(sorted_phrases[:num_phrases]) # Return top N phrases
     return top_phrases
 
 def visualize_word_cloud(keywords):
@@ -82,7 +74,7 @@ def visualize_word_cloud(keywords):
     plt.figure(figsize=(10, 6))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
-    plt.title("Word Cloud of Extracted Keywords")
+    plt.title("Word Cloud of Extracted Key-Words")
     plt.show()
 
 def visualize_bar_chart(data, title='Top Terms'):
@@ -101,7 +93,6 @@ def extract_keywords_rake(text, num_keywords=15):
     
     rake = Rake(language='french', stopwords=STOP_WORDS) # Initialize RAKE
     rake.extract_keywords_from_text(text)
-    
     
     ranked_phrases = rake.get_ranked_phrases()[:num_keywords] # Returns phrases with scores; extract top N
     # Convert to a dict for similarity measure (equal weighting)
@@ -135,22 +126,22 @@ if __name__ == "__main__":
             print("Top Keywords (Our Method):", list(keyword_frequencies.keys()))
         
             visualize_word_cloud(keyword_frequencies) # Word cloud
-            visualize_bar_chart(keyword_frequencies, title='Top Keywords Extracted (Our Method)') # Bar chart
+            visualize_bar_chart(keyword_frequencies, title='Top Key-Words Extracted (Our Method)') # Bar chart
 
             key_phrases = extract_key_phrases(lemmatized_words, num_phrases=15)
             if key_phrases:
                 print("Top Key Phrases (Our Method):", list(key_phrases.keys()))
-                visualize_bar_chart(key_phrases, title='Top Key Phrases Extracted (Our Method)')
+                visualize_bar_chart(key_phrases, title='Top Key-Phrases Extracted (Our Method)')
             
             # The following are the computations for computing keywords with other methods for evaluation purposes
             
             # RAKE's Method
             rake_keywords = extract_keywords_rake(text, num_keywords=15)
-            print("Top Keywords (RAKE):", list(rake_keywords.keys()))
+            print("Top Key-Words (RAKE):", list(rake_keywords.keys()))
             
             # TextRank's Method
             textrank_keywords = extract_keywords_textrank(text, num_keywords=15)
-            print("Top Keywords (TextRank):", list(textrank_keywords.keys()))
+            print("Top Key-Words (TextRank):", list(textrank_keywords.keys()))
             
             our_method_set = set(keyword_frequencies.keys()) # Compare
             rake_set = set(rake_keywords.keys())
